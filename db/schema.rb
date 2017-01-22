@@ -87,14 +87,13 @@ ActiveRecord::Schema.define(version: 20170121073052) do
     t.datetime "photo_updated_at"
     t.string   "thumb_nail"
     t.time     "deleted_at"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "art_approved_by"
     t.datetime "art_approved_date"
     t.string   "compliance_approved_by"
     t.datetime "compliance_approved_date"
     t.string   "compliance_approval"
-    t.integer  "status",                   default: 0
     t.index ["back_art_id"], name: "index_card_back_specs_on_back_art_id", using: :btree
     t.index ["card_set_id"], name: "index_card_back_specs_on_card_set_id", using: :btree
     t.index ["deleted_at"], name: "index_card_back_specs_on_deleted_at", using: :btree
@@ -125,6 +124,16 @@ ActiveRecord::Schema.define(version: 20170121073052) do
     t.datetime "updated_at", null: false
     t.index ["deleted_at"], name: "index_card_background_colors_on_deleted_at", using: :btree
     t.index ["design_id", "color"], name: "index_card_background_colors_on_design_id_and_color", unique: true, using: :btree
+  end
+
+  create_table "card_background_edges", force: :cascade do |t|
+    t.integer  "background_id"
+    t.integer  "edge_id"
+    t.time     "deleted_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["background_id", "edge_id"], name: "index_card_background_edges_on_background_id_and_edge_id", unique: true, using: :btree
+    t.index ["deleted_at"], name: "index_card_background_edges_on_deleted_at", using: :btree
   end
 
   create_table "card_design_types", force: :cascade do |t|
@@ -181,14 +190,13 @@ ActiveRecord::Schema.define(version: 20170121073052) do
     t.datetime "art_updated_at"
     t.string   "thumb_nail"
     t.time     "deleted_at"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "art_approved_by"
     t.datetime "art_approved_date"
     t.string   "compliance_approved_by"
     t.datetime "compliance_approved_date"
     t.string   "compliance_approval"
-    t.integer  "status",                   default: 0
     t.index ["card_set_id"], name: "index_card_face_specs_on_card_set_id", using: :btree
     t.index ["deleted_at"], name: "index_card_face_specs_on_deleted_at", using: :btree
     t.index ["face_art_id"], name: "index_card_face_specs_on_face_art_id", using: :btree

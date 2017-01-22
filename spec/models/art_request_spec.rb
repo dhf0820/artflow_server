@@ -132,7 +132,8 @@ describe 'ArtRequest for Customer' do
   end
 
   describe 'Queue Management' do
-    describe 'finding first fifoo request' do
+    describe 'finding first fifo request' do
+      expect{ArtRequest.next()}.to_not raise_error
 
     end
   end
