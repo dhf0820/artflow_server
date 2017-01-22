@@ -1,0 +1,10 @@
+.container
+	.well
+		= form_tag(customer_from_csv_customers_path, method: "post", multipart: true ) do
+			.pannel.pannel-default
+			%legend Upload CSV File
+			.row
+				.col-md-3
+					= file_field_tag :file
+				.col-md-6
+					= submit_tag 'Submit', class: "btn btn-primary"

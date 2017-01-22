@@ -1,0 +1,1 @@
+json.partial! "card_sizes/card_size", card_size: @card_size

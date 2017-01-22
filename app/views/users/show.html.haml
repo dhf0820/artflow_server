@@ -1,0 +1,32 @@
+%table.table
+  %tr
+    %td Roles
+    %td= @user.roles_applied
+  - @user.attributes.each do |key, value|
+    - unless key.include?("invi") || key.include?("sign") || key.include?("pass") || key.include?("_at")
+      %tr
+        %td= key.upcase
+        %td= value
+  - if @user.has_role?(:admin)
+    %tr
+      %td{colspan: 2}
+        %h3 Employees
+    %tr
+      %td{colspan: 2}
+        = link_to "Add new employee", new_user_employee_path(@user), class: 'btn btn-primary pull-right'
+        %table.table.table-bordered
+          %tr
+            %td Email
+            %td Roles
+            %td
+            %td
+            %td
+          - @user.employees.each do |employee|
+            %tr
+              %td= employee.email
+              %td= employee.roles_applied
+              %td= link_to "Show", user_employee_path(@user, employee)
+              %td= link_to "Edit", edit_user_employee_path(@user, employee)
+              %td= link_to "Destroy", user_employee_path(@user, employee), method: :delete
+  
+=link_to "Back", users_path

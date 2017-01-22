@@ -1,0 +1,14 @@
+= simple_form_for @customer_card_back do |f|
+  = f.input :family_id, collection: CardFamily.all
+  = f.input :back_id
+  = f.input :print_seq_id, collection: PrintSeq.all
+  = f.input :customer_number
+  = f.input :card_size_id, collection: CardSize.all
+  = f.input :plate_id
+  = f.input :job_id, collection: Job.all
+  = f.input :art_id
+  = f.input :approved_date
+  = f.input :customer_approved_by
+  = f.input :approval_entered_by
+  = f.input :comments
+  = f.button :submit, "Save"

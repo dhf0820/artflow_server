@@ -1,0 +1,3 @@
+class CardAceType < ApplicationRecord
+
+end

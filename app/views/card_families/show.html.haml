@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Code:
+  = @card_family.code
+%p
+  %b Side:
+  = @card_family.side
+%p
+  %b Desc:
+  = @card_family.desc
+
+= link_to 'Edit', edit_card_family_path(@card_family)
+\|
+= link_to 'Back', card_families_path

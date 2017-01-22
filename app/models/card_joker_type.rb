@@ -1,0 +1,3 @@
+class CardJokerType < ApplicationRecord
+
+end

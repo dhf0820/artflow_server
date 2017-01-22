@@ -1,0 +1,26 @@
+,FaceTypeCodes,
+Face Type CODE,Catalog Description,#
+STD,Standard,00
+SX,Sentinel Exp,02
+SNP,Sentinel No Peek,05
+STA,Sentinel Tech Art,07
+STA2,Sent Tech Art II,08
+TA,Tech Art,10
+TA2,Tech Art II,18
+TA NEW TANG,Tech Art New Tang,19
+GSTD,Grand Standard,20
+WAG,Wagner,23
+GW,Grand Wagner,26
+GT,Grand Tang,29
+JUM,Jumbo,30
+JNP,Jumbo No Peek,35
+JTA,Jumbo Tech Art,37
+JTA2,Jumbo Tech Art II,38
+MAG,Magnum,40
+CUS,CUSTOM,90
+NP,Standard No Peek,55
+NAF,Native American,60
+AIF,AIF,65
+CRAPS,CRAPS,75
+PAN,PAN,70
+ROUL,Roulette,80

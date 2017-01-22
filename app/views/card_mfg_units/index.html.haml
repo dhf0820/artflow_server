@@ -1,0 +1,31 @@
+%h1 Listing MFG Units
+= link_to 'New Mfg unit', new_card_mfg_unit_path, class: 'btn btn-primary pull-right'
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Name
+      %th Desc
+      %th Itsmshnam
+      %th Product
+      %th Dsp order
+      %th Pkg count
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_mfg_units.each do |card_mfg_unit|
+      %tr
+        %td= card_mfg_unit.name
+        %td= card_mfg_unit.desc
+        %td= card_mfg_unit.itsmshnam
+        %td= card_mfg_unit.product_id
+        %td= card_mfg_unit.dsp_order
+        %td= card_mfg_unit.pkg_count
+        %td= link_to 'Show', card_mfg_unit
+        %td= link_to 'Edit', edit_card_mfg_unit_path(card_mfg_unit)
+        %td= link_to 'Destroy', card_mfg_unit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Code:
+  = @card_size.code
+%p
+  %b Name:
+  = @card_size.name
+%p
+  %b Width:
+  = @card_size.width
+%p
+  %b Height:
+  = @card_size.height
+
+= link_to 'Edit', edit_card_size_path(@card_size)
+\|
+= link_to 'Back', card_sizes_path

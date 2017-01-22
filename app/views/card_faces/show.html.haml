@@ -1,0 +1,75 @@
+%p#notice= notice
+
+%p
+  %b Family:
+  = @card_face.family_id
+%p
+  %b Face:
+  = @card_face.face_id
+%p
+  %b Print seq:
+  = @card_face.print_seq_id
+%p
+  %b Customer num:
+  = @card_face.customer_num
+%p
+  %b Plate:
+  = @card_face.plate_id
+%p
+  %b Card size:
+  = @card_face.card_size_id
+%p
+  %b Hd color:
+  = @card_face.hd_color
+%p
+  %b Ace type:
+  = @card_face.ace_type_id
+%p
+  %b Is ace serial:
+  = @card_face.is_ace_serial
+%p
+  %b Is custom ta:
+  = @card_face.is_custom_ta
+%p
+  %b Joker1:
+  = @card_face.joker1_id
+%p
+  %b Joker2:
+  = @card_face.joker2_id
+%p
+  %b Ad1 type:
+  = @card_face.ad1_type_id
+%p
+  %b Ad2 type:
+  = @card_face.ad2_type_id
+%p
+  %b Job:
+  = @card_face.job_id
+%p
+  %b Art:
+  = @card_face.art_id
+%p
+  %b Last modified by:
+  = @card_face.last_modified_by
+%p
+  %b M36:
+  = @card_face.m36_id
+%p
+  %b M40:
+  = @card_face.m40_id
+%p
+  %b Approved date:
+  = @card_face.approved_date
+%p
+  %b Customer approved by:
+  = @card_face.customer_approved_by
+%p
+  %b Approved by:
+  = @card_face.approved_by
+%p
+  %b Comments:
+  = @card_face.comments
+
+= link_to 'Edit', edit_card_face_path(@card_face)
+\|
+= link_to 'Back', card_faces_path

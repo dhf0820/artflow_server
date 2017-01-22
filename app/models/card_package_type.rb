@@ -1,0 +1,3 @@
+class CardPackageType < ApplicationRecord
+
+end

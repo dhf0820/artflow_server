@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @card_color.name
+%p
+  %b C:
+  = @card_color.c
+%p
+  %b Y:
+  = @card_color.y
+%p
+  %b M:
+  = @card_color.m
+%p
+  %b K:
+  = @card_color.k
+
+= link_to 'Edit', edit_card_color_path(@card_color)
+\|
+= link_to 'Back', card_colors_path

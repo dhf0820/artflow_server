@@ -1,0 +1,1 @@
+json.array! @casino_card_art_requests, partial: 'casino_card_art_requests/casino_card_art_request', as: :casino_card_art_request

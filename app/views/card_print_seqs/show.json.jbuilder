@@ -1,0 +1,1 @@
+json.partial! "print_seqs/print_seq", print_seq: @print_seq

@@ -1,0 +1,8 @@
+:plain
+  $(document).ready(function(){
+    $("#cardColorModal").modal('hide')
+    $("#cardColorModal input[type='text']").val("")
+    $(".active-color-select").append("<option value=\"#{@card_color.id}\"> #{@card_color.name} </option>")
+    $(".active-color-select").val("#{@card_color.id.to_s}")
+    $(".active-color-select").parent().parent().find(".color-preview").css("background-color", "rgb(#{@card_color.to_rgb})")
+  })

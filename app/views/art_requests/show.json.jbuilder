@@ -1,0 +1,1 @@
+json.partial! "art_requests/art_request", art_request: @art_request

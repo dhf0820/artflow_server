@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  family_id: 1
+  back_id: 1
+  print_seq_id: 1
+  customer_number: MyString
+  card_size_id: 1
+  plate_id: 1
+  job_id: 1
+  art_id: 1
+  approved_date: 2016-11-09 21:42:56
+  customer_approved_by: MyString
+  approval_entered_by: 1
+  comments: MyText
+
+two:
+  family_id: 1
+  back_id: 1
+  print_seq_id: 1
+  customer_number: MyString
+  card_size_id: 1
+  plate_id: 1
+  job_id: 1
+  art_id: 1
+  approved_date: 2016-11-09 21:42:56
+  customer_approved_by: MyString
+  approval_entered_by: 1
+  comments: MyText

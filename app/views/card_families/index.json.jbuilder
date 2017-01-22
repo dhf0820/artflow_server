@@ -1,0 +1,1 @@
+json.array! @card_families, partial: 'card_families/card_family', as: :card_family

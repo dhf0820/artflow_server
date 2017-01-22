@@ -1,0 +1,2 @@
+class CustomerCardBackPolicy < ApplicationPolicy
+end

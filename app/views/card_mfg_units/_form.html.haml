@@ -1,0 +1,8 @@
+= simple_form_for @card_mfg_unit do |f|
+  = f.input :name
+  = f.input :desc
+  = f.input :itsmshnam
+  = f.input :product_id, collection: Product.all
+  = f.input :dsp_order
+  = f.input :pkg_count
+  = f.button :submit, "Save"

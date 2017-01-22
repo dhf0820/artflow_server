@@ -1,0 +1,27 @@
+%h1 Listing card sizes
+= link_to 'New Card size', new_card_size_path, class: 'btn btn-primary pull-right'
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Code
+      %th Name
+      %th Width
+      %th Height
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_sizes.each do |card_size|
+      %tr
+        %td= card_size.code
+        %td= card_size.name
+        %td= card_size.width
+        %td= card_size.height
+        %td= link_to 'Show', card_size
+        %td= link_to 'Edit', edit_card_size_path(card_size)
+        %td= link_to 'Destroy', card_size, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Code:
+  = @card_ace.code
+%p
+  %b Name:
+  = @card_ace.name
+%p
+  %b Photo:
+  = image_tag(@card_ace.photo.url)
+
+= link_to 'Edit', edit_card_ace_path(@card_ace)
+\|
+= link_to 'Back', card_aces_path

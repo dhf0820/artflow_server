@@ -1,0 +1,2 @@
+class CardEdgePolicy < ApplicationPolicy
+end

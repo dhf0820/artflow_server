@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_num: MyString
+  product_id: 1
+  packaging_id: 1
+  card_paper_id: 1
+
+two:
+  customer_num: MyString
+  product_id: 1
+  packaging_id: 1
+  card_paper_id: 1

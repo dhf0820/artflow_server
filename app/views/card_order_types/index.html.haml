@@ -1,0 +1,21 @@
+%h1 Listing order types
+= link_to 'New Order type', new_card_order_type_path, class: 'btn btn-primary pull-right'
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_order_types.each do |card_order_type|
+      %tr
+        %td= card_order_type.name
+        %td= link_to 'Show', card_order_type
+        %td= link_to 'Edit', edit_card_order_type_path(card_order_type)
+        %td= link_to 'Destroy', card_order_type, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

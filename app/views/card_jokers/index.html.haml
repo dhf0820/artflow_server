@@ -1,0 +1,23 @@
+%h1 Listing card jokers
+
+= link_to 'New Joker', new_card_joker_path, class: 'btn btn-primary pull-right'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Code
+      %th Name
+      %th Photo
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_jokers.each do |card_joker|
+      %tr
+        %td= card_joker.code
+        %td= card_joker.name
+        %td= image_tag(card_joker.photo.url(:thumb))
+        %td= link_to 'Show', card_joker
+        %td= link_to 'Edit', edit_card_joker_path(card_joker)
+        %td= link_to 'Destroy', card_joker, :method => :delete, :data => { :confirm => 'Are you sure?' }
+

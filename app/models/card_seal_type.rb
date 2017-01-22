@@ -1,0 +1,3 @@
+class CardSealType < ApplicationRecord
+
+end

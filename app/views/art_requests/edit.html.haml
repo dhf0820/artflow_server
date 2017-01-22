@@ -1,0 +1,60 @@
+.card-panel
+  = simple_nested_form_for(@art_request) do |f|
+    .row{:style => "border-bottom: 1px solid #291818"}
+      .col.s12
+        %span.col.s4
+          Customer #:
+          = @art_request.customer.sage_id
+        %span.col.s4
+          Casino:
+          = @art_request.customer.name
+        %span.col.s4
+          Sales Rep:
+          = @art_request.sales_rep.name unless @art_request.sales_rep.blank?
+    .row
+      .col.s12
+        %span.col.s4
+          Art Requested Date #:
+          = @art_request.art_requested_date.strftime("%m/%d/%Y") unless @art_request.art_requested_date.blank?
+        %span.col.s4
+          Shipment Date:
+          = @art_request.shipment_date.strftime("%m/%d/%Y") unless @art_request.shipment_date.blank?
+        %span.col.s4
+          Attachements:
+          = link_to "2", "#"
+    .row
+      %ul
+        %li
+          .col.s12.product-header.min-padding
+            .col.s3.custom-s3{:style => "margin-right: -51px;"}
+              .left.lpad
+                Product:
+              .left.rpad
+                =# f.input :product_id, collection: Product.all.map{|p| [p.name, p.id]}, :label => false
+                = f.input :product_id, collection: @product.map{|p| [p[:name], p[:id]] }, :label => false
+            .col.s9{:style => "width: 80%;"}
+              = f.fields_for :card_art_request do |ca|
+                .col.s3.custom-s3
+                  .left.lpad
+                    Design:
+                  .left.rpad
+                    = ca.input :design_id, collection: @product[0][:items][0][:items].map{|d| [d[:name], d[:id]]}, :label => false
+                .col.s4.custom-s4
+                  .left.lpad
+                    Card Stock:
+                  .left.rpad
+                    = ca.input :card_stock_id, collection: @product[0][:items][1][:items][0][:items].map{|d| [d[:name], d[:id]]} , :label => false
+                .col.s3.custom-cardtype
+                  .left.lpad
+                    Card Type:
+                  .left.rpad
+                    = ca.input :card_type_id, collection: @product[0][:items][2][:items][0][:items].map{|d| [d[:name], d[:id]]}, :label => false
+                  .left{:style => "padding-left: 13px;padding-top:9px;clear: both;position: absolute;right: 119px;"}
+                    = link_to "Add Specification", '#'
+                - @ca = ca
+          = render :partial => 'spec_form', :locals => {:ca => @ca , :car => @card_art_request}
+    = link_to 'Go Back', art_requests_path , class: 'btn orange'
+    = f.submit 'Save', class: 'btn blue right'
+
+
+                

@@ -1,0 +1,2 @@
+json.extract! customer_card_back, :id, :family_id, :back_id, :print_seq_id, :customer_number, :card_size_id, :plate_id, :job_id, :art_id, :approved_date, :customer_approved_by, :approval_entered_by, :comments, :created_at, :updated_at
+json.url customer_card_back_url(customer_card_back, format: :json)

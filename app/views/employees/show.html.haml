@@ -1,0 +1,11 @@
+%table.table
+  %tr
+    %td Roles
+    %td= @employee.roles_applied
+  - @employee.attributes.each do |key, value|
+    - unless key.include?("invi") || key.include?("sign") || key.include?("pass") || key.include?("_at")
+      %tr
+        %td= key.upcase
+        %td= value
+  
+=link_to "Back", user_path(@user)

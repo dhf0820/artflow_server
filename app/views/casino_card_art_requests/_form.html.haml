@@ -1,0 +1,80 @@
+.container
+  .panel.panel-primary
+    .panel-heading
+      %h3 Art Flow
+    .panel-body
+      %h4{:style => "text-align: center;"} Casion Cart Art Request
+      = simple_nested_form_for([@art_request, @casino_card_art_request], :html => { :class => 'form-inline'}) do |f|
+        = f.input :art_request_id, as: :hidden, input_html: {value: @art_request.id}
+        = f.error_notification
+        
+        .row
+          .col-md-4
+            %b Customer # :
+            = @art_request.customer_id
+          .col-md-4
+            Customer :
+            = @art_request.customer_details
+          .col-md-4
+            Name :
+            = @art_request.customer_name
+        %br
+        .row
+          .col-md-offset-9.col-md-3
+            %b Job No: P#{ArtRequest.count}
+        %br
+        .panel.panel-section
+          .row
+            .col-md-3
+              = f.input :paper_type_id, collection: CardPaper.all
+            .col-md-3
+              = f.input :card_type_id, collection: CardFamily.all
+        #specifications
+          - @casino_card_art_request.art_request_specifications.build if @casino_card_art_request.art_request_specifications.empty?
+          = f.fields_for :art_request_specifications do |s|
+            .panel.panel-section
+              %legend Specifications
+              .row
+                .col-md-3
+                  .panel.panel-section
+                    %legend Card Side
+                    = s.input :card_side_id, :as => :radio_buttons, :collection => [ "Face", "Back" ], :item_wrapper_class => 'radio-inline', label: false
+                .col-md-3
+                  =s.input :face_style_id, collection: CardFace.all, include_blank: false
+                .col-md-3.card-edge-type.default-hide
+                  =s.input :card_edge_id, collection: CardEdge.all, include_blank: false 
+                .col-md-3.packaging-type.default-hide
+                  =s.input :card_packaging_type_id, collection: CardPackaging.all, include_blank: false
+                .col-md-3.side-identifier 
+              .panel.panel-section
+                %legend.colors Face Colors
+                .row
+                  .col-md-3
+                    = s.input :first_color_id, collection: available_colors , input_html: { class: 'specification_card_color'} 
+                    %div.color-preview
+                  .col-md-3
+                    = s.input :second_color_id, collection: available_colors, input_html: { class: 'specification_card_color'} 
+                    %div.color-preview
+                  .col-md-3
+                    = s.input :third_color_id, collection: available_colors, input_html: { class: 'specification_card_color'}
+                    %div.color-preview
+                  .col-md-3
+                    = s.input :forth_color_id, collection: available_colors, input_html: { class: 'specification_card_color'}
+                    %div.color-preview
+              .panel.panel-section
+                %legend Production Notes
+                .row
+                  .col-md-12
+                    = s.input :production_notes, label: false, input_html: { :cols => 120, :rows => 3}
+        .panel.panel-section-no-border
+          .row
+            - if @confirmation
+              .col-md-4
+                = link_to "OK", confirmation_art_request_casino_card_art_request_path(@art_request, @casino_card_art_request), class: 'btn btn-primary'
+            - else
+              .col-md-4
+                = f.button :submit, "Save"
+              .col-md-4
+                = f.link_to_add "Add spefications", :art_request_specifications, class: 'btn btn-default center-block', "data-target" => "#specifications"
+      = render "card_color_modal"
+    .panel-footer

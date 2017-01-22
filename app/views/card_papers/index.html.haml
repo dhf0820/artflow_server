@@ -1,0 +1,25 @@
+%h1 Listing card papers
+
+= link_to 'New Card paper', new_card_paper_path, class: 'btn btn-primary pull-right'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Code
+      %th Name
+      %th Finish
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_papers.each do |card_paper|
+      %tr
+        %td= card_paper.code
+        %td= card_paper.name
+        %td= card_paper.finish
+        %td= link_to 'Show', card_paper
+        %td= link_to 'Edit', edit_card_paper_path(card_paper)
+        %td= link_to 'Destroy', card_paper, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

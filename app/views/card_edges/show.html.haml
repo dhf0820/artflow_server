@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @card_edge.name
+%p
+  %b Desc:
+  = @card_edge.desc
+%p
+  %b Photo:
+  = image_tag(@card_edge.photo.url)
+
+= link_to 'Edit', edit_card_edge_path(@card_edge)
+\|
+= link_to 'Back', card_edges_path

@@ -1,0 +1,35 @@
+%h1 Listing casino card art requests
+= link_to 'New Casino card art request', new_art_request_casino_card_art_request_path(@art_request, @casino_card_art_request), class: 'btn btn-primary pull-right'
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Customer
+      %th Customer details
+      %th Customer name
+      %th Customer phone
+      %th Customer email
+      %th Job no
+      %th Paper type
+      %th Card type
+      %th
+      %th
+      %th
+
+  %tbody
+    - @casino_card_art_requests.each do |casino_card_art_request|
+      %tr
+        %td= casino_card_art_request.art_request.customer_id if casino_card_art_request.art_request
+        %td= casino_card_art_request.art_request.customer_details if casino_card_art_request.art_request
+        %td= casino_card_art_request.art_request.customer_name if casino_card_art_request.art_request
+        %td= casino_card_art_request.art_request.customer_phone if casino_card_art_request.art_request
+        %td= casino_card_art_request.art_request.customer_email if casino_card_art_request.art_request
+        %td= casino_card_art_request.job_no
+        %td= casino_card_art_request.paper_type_id
+        %td= casino_card_art_request.card_type_id
+        %td= link_to 'Show', [@art_request, casino_card_art_request ]
+        %td= link_to 'Edit', edit_art_request_casino_card_art_request_path(@art_request, casino_card_art_request)
+        %td= link_to 'Destroy', [ @art_request, casino_card_art_request ], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

@@ -1,0 +1,15 @@
+= simple_form_for @employee do |f|
+  .col-md-6
+    = f.input :employer_id, as: :hidden, input_html: {value: @user.id}
+    = f.input :name
+    = f.input :email
+    = f.input :password, as: :password
+    = f.input :password_confirmation, as: :password
+    = f.button :submit, "Save"
+  .col-md-6 
+    %div
+      %b Roles
+    %div
+      %input{name: 'roles[]', value: "artist", type: :checkbox, checked: @employee.has_role?(:artist)} Artist
+    %div
+      %input{name: 'roles[]', value: "csr", type: :checkbox, checked: @employee.has_role?(:csr)} CSR

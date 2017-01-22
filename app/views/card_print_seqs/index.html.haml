@@ -1,0 +1,21 @@
+%h1 Listing print sequences
+
+= link_to 'New Print seq', new_card_print_seq_path, class: 'btn btn-primary pull-right'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Name
+      %th Desc
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_print_seqs.each do |card_print_seq|
+      %tr
+        %td= card_print_seq.name
+        %td= card_print_seq.desc
+        %td= link_to 'Show', card_print_seq
+        %td= link_to 'Edit', edit_card_print_seq_path(card_print_seq)
+        %td= link_to 'Destroy', card_print_seq, :method => :delete, :data => { :confirm => 'Are you sure?' }
+

@@ -1,0 +1,1 @@
+json.array! @customer_card_backs, partial: 'customer_card_backs/customer_card_back', as: :customer_card_back

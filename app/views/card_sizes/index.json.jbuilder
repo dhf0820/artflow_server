@@ -1,0 +1,1 @@
+json.array! @card_sizes, partial: 'card_sizes/card_size', as: :card_size

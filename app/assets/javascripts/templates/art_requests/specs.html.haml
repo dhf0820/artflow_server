@@ -1,0 +1,20 @@
+.col.s12.min-padding{:style => "margin-top: -7px;"}
+  %ul.collapsible
+    %li{"ng-repeat" => "face_spec in art_request.card_art_request.card_face_specs"}
+      .collapsible-header.sheader
+        %span.jtext.jcustom-space
+          {{ face_spec.card_set_id }} - {{ face_spec.design_id}} - {{ face_spec.color }}
+        %span.jtext.jcustom-space
+          Face Id: {{ face_spec.face_type_id }}
+        %span.jtext.jcustom-space
+          Art: {{ art_request.id }}
+        %span.right
+          %i.material-icons
+            play_arrow
+      .collapsible-body
+        .row
+          .speclines.col.s12
+            %span.col.s2
+              Art1234.v1.pdf
+            %span.col.s5  
+              Possible short description of the art file  

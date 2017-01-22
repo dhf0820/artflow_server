@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @card_order_type.name
+
+= link_to 'Edit', edit_card_order_type_path(@card_order_type)
+\|
+= link_to 'Back', card_order_types_path

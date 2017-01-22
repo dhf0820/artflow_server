@@ -1,0 +1,1 @@
+json.array! @print_seqs, partial: 'print_seqs/print_seq', as: :print_seq

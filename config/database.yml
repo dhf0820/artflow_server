@@ -1,0 +1,39 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+#
+#development: &development
+#  <<: *default
+#  database: "artflow_dev"
+#  username: "postgres"
+#  password: "postgres"
+#  host: "localhost"
+
+
+development: &development
+  <<: *default
+  url: <%= ENV['ARTFLOWDEV_URL'] %>
+#  database: <%= ENV['COMPDEV_DATABASE'] %>
+#  username: <%= ENV['COMPDEV_USERNAME'] %>
+#  password: <%= ENV['COMPDEV_PASSWORD'] %>
+#  host:     <%= ENV['COMPDEV_ADDRESS'] %>
+
+production:
+  <<: *default
+  url: <%= ENV['ARTFLOW_URL'] %>
+#  database: <%= ENV['COMPLIANCE_DATABASE'] %>
+#  username: <%= ENV['COMPLIANCE_USERNAME'] %>
+#  password: <%= ENV['COMPLIANCE_PASSWORD'] %>
+#  host:     <%= ENV['COMPLIANCE_ADDRESS'] %>
+
+test:
+  <<: *default
+  url: <%= ENV['ARTFLOWTEST_URL'] %>
+#  database: <%= ENV['COMPTEST_DATABASE'] %>
+#  username: <%= ENV['COMPTEST_USERNAME'] %>
+#  password: <%= ENV['COMPTEST_PASSWORD'] %>
+#  host:     <%= ENV['COMPTEST_ADDRESS'] %>
+timeout: 5000

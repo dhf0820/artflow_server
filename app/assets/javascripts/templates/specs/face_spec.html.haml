@@ -1,0 +1,54 @@
+.collapsible-header.specheader{"ng-init" => "spec.spectype = 'face' "}
+  %span.jtext.spec-space
+    {{ spec.spectype }} 
+  %span.jtext.right
+    %i.close.material-icons.small library_books
+  %span.jtext.spec-space.right
+    Art Id: {{ art_request.id }}
+.collapsible-body
+  #face_specs
+    .row
+      .speclines.col.s12
+        %span.col.s2
+          %ul
+            %li.label
+              Side: 
+            %li
+              %select{"material-select" => "", "ng-model" => "spec.spectype"}
+                %option{:value => "face" ,:selected => "selected"} Face
+        %span.col.s2
+          %ul
+            %li.label
+              Face Style:
+            %li
+              %select{"material-select" => "", "ng-model" => "spec.face_type_id", "ng-options" => "ft.id as ft.name for ft in card_face_types"}
+        %span.col.s2
+          %ul
+            %li.label
+              Ace:
+            %li
+              %select{"material-select" => "", "ng-model" => "spec.ace_id", "ng-options" => "ac.id as ac.name for ac in card_ace_types"}
+        %span.col.s2{"ng-show" => "spec.spectype == 'face'"}
+          %ul
+            %li.label
+              Joker:
+            %li
+              %select{"material-select" => "", "ng-model" => "spec.joker_id", "ng-options" => "j.id as j.name for j in card_joker_types"}
+        %span.col.s2{"ng-show" => "spec.spectype"}
+          Face Color:
+          %select{"material-select" => "", "ng-model" => "spec.color"}
+            %option{:value => "106", :selected => "selected", "data-style" => "background-color: #ffc800;"}
+              GOLD
+            %option{"data-color" => "#CD5C5C", :value => "47","data-style" => "background-color: green;"} GREEN
+    .row
+      .speclines.col.s12
+        %span.col.s6
+          %label Comments
+          %textarea.materialize-textarea{"ng-model" => "spec.comments"}
+          %label Reference Attachments
+          .chip
+            Winnlogbw.png
+            %i.close.material-icons close
+        .left{:style => "padding-left: 60px"}
+          %image.qcard{:src => '/assets/queen-spades.png'}
+          %image.qcard{:src => '/assets/queen-spades.png'}

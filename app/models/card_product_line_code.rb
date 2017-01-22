@@ -1,0 +1,3 @@
+class CardProductLineCode < ApplicationRecord
+
+end

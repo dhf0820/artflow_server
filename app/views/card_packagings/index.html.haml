@@ -1,0 +1,25 @@
+%h1 Listing card packagings
+= link_to 'New Packaging', new_card_packaging_path, class: 'btn btn-primary pull-right'
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Name
+      %th Desc
+      %th Item nmbr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_packagings.each do |card_packaging|
+      %tr
+        %td= card_packaging.name
+        %td= card_packaging.desc
+        %td= card_packaging.item_num
+        %td= link_to 'Show', card_packaging
+        %td= link_to 'Edit', edit_card_packaging_path(card_packaging)
+        %td= link_to 'Destroy', card_packaging, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

@@ -1,0 +1,65 @@
+.col.s12.min-padding{:style => "margin-top: -7px;"}
+  %ul.collapsible.new_spec{"data-collapsible" => "accordion"}
+    - if ca.object.new_record?
+      = render :partial => 'new_spec_form', :locals => {:ca => ca}
+    - else
+      - car.specs.reverse.each do |s|
+        - spec_type,op_spec_type = s.class.name == "CardBackSpec" ? ["back","face"] : ["face","back"]
+        - if spec_type == "face"
+          = render :partial => 'face_spec_form', :locals => {:ca => ca, :spec_type => spec_type, :op_spec_type => op_spec_type, :s => s}
+        - if spec_type == "back"
+          = render :partial => 'back_spec_form', :locals => {:ca => ca, :spec_type => spec_type, :op_spec_type => op_spec_type, :s => s}
+
+:javascript
+  $("document").ready(function(){
+    $("#add_spec").click(function(){
+      $(".new_spec").append("")
+    })
+    $('#colorselector_1').colorselector();
+
+
+    $.widget( "custom.iconselectmenu", $.ui.selectmenu, {
+      _renderItem: function( ul, item ) {
+
+        var li = $( "<li>" ),
+          wrapper = $( "<div>", { text: item.label } );
+ 
+        if ( item.disabled ) {
+          li.addClass( "ui-state-disabled" );
+        }
+ 
+        $( "<span>", {
+          style: item.element.attr( "data-style" ),
+          "class": "ui-icon " + item.element.attr( "data-class" )
+        })
+          .appendTo( wrapper );
+ 
+        return li.append( wrapper ).appendTo( ul );
+      }
+    });
+
+
+    $( ".selectmenu" )
+        .iconselectmenu()
+        .iconselectmenu( "menuWidget");
+
+    $(".next").click(function(e){
+      e.preventDefault();
+      console.log("hello")
+      var nextval = $(".selectmenu > option:selected").next().val();
+      console.log(nextval);
+      $('.selectmenu').selectmenu("value", nextval);
+    })
+  })
+:css 
+  .ui-icon, .ui-widget-content .ui-icon{
+    background-image: none;
+  }
+
+  .ui-menu .ui-icon {
+    left: 10.2em;
+  }
+
+  option.red:after { background: #c00; }
+  #cust option.green:after { background: #0c0; }
+  #cust option.blue:after { background: #00c; }

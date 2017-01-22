@@ -1,0 +1,142 @@
+%li#face_specs
+  .collapsible-header.specheader
+    %span.jtext.spec-space
+      = "Face"
+      &nbsp;
+      = "-"
+      &nbsp;
+      = "Red"
+    %span.jtext.spec-space
+      Art Id: 1235
+    %span.jtext.spec-space
+      Finished
+    %span.jtext.spec-space
+      Activity: Approved
+  .collapsible-body
+    #face_specs
+      = ca.fields_for :card_face_specs do |fs|
+        .row
+          .speclines.col.s12
+            %span.col.s2
+              %ul
+                %li.label
+                  Side: 
+                %li
+                  %select.decide_spec
+                    %option{:value => "face" ,:selected => "selected"}= "face".capitalize
+                    %option{:value => "back"}= "back".capitalize
+            %span.col.s3
+              %ul
+                %li.label
+                  Face Style:
+                %li
+                  = fs.input :face_type_id, collection: CardFaceType.all.map{|ft| [ft.name, ft.id]}, :label => false
+            %span.col.s2
+              %ul
+                %li.label
+                  Ace:
+                %li
+                  = fs.input :ace_id, collection: CardAceType.all.map{|ft| [ft.name, ft.id]}, :label => false
+            %span.col.s2
+              %ul
+                %li.label
+                  Joker:
+                %li
+                  = fs.input :joker_id, collection: CardJokerType.all.map{|ft| [ft.name, ft.id]}, :label => false
+        .row
+          .speclines.col.s12
+            %span.col.s6
+              Comments
+              = fs.input :comments, :label => false
+            %span.col.s3
+              Face Color:
+              %select.selectmenu
+                %option{:value => "106", :selected => "selected", "data-style" => "background-color: #ffc800;"}
+                  GOLD
+                %option{"data-color" => "#CD5C5C", :value => "47","data-style" => "background-color: green;"} GREEN
+        .row
+          .speclines.col.s12
+            %span.col.s6
+              Reference Attachments
+              .chip
+                Winnlogbw.png
+                %i.close.material-icons close
+%li.active#back_specs{:style => "display:none"}
+  .collapsible-header.specheader.active
+    %span.jtext.spec-space
+      = "back".capitalize
+      &nbsp;
+      = "-"
+      &nbsp;
+      = "Green"
+    %span.jtext.spec-space
+      Art Id: 1235
+    %span.jtext.spec-space
+      Finished
+    %span.jtext.spec-space
+      Activity: Approved
+  .collapsible-body
+    = ca.fields_for :card_back_specs do |bs|
+      .row
+        .speclines.col.s12
+          %span.col.s2
+            %ul
+              %li.label
+                Side: 
+              %li
+                %select.decide_spec
+                  %option{:value => "face" ,:selected => "selected"}= "face".capitalize
+                  %option{:value => "back"}= "back".capitalize
+          %span.col.s4
+            %ul
+              %li.label
+                Back Style:
+              %li
+                = bs.input :back_type_id, collection: CardBackType.all.map{|ft| [ft.name, ft.id]}, :label => false
+      .row
+        .speclines.col.s12
+          %span.col.s6
+            Comments
+            = bs.input :comments, :label => false
+          %span.col.s3
+            Back Color:
+            = bs.input :color, :collection => [["GOLD","GOLD"],["GREEN","GREEN"]], :label => false, :selected => "GOLD"
+      .row
+        .speclines.col.s12
+          %span.col.s6
+            Reference Attachments
+            .chip
+              Winnlogbw.png
+              %i.close.material-icons close
+
+:javascript
+  $("document").ready(function(){
+    $(".decide_spec").change(function(){
+       if($(this).val() == "face"){
+         $("#face_specs").css("display","block");
+         $("#back_specs").css("display","none");
+         $("#back_specs").removeClass("active");
+         $("#face_specs").addClass("active");
+         $("#back_specs .collapsible-header").removeClass("active");
+         $("#face_specs .collapsible-header").addClass("active");
+         $("#face_specs .decide_spec").val("face"); 
+       }else{
+         $("#back_specs").css("display","block");
+         $("#face_specs").css("display","none"); 
+         $("#face_specs").removeClass("active"); 
+         $("#back_specs").addClass("active");
+         $("#face_specs .collapsible-header").removeClass("active");
+         $("#back_specs .collapsible-header").addClass("active");  
+         $("#back_specs .decide_spec").val("back"); 
+
+       }
+    })
+    $("#art_request_submit").click(function(e){
+      val = $('.decide_spec').val()
+      if(val == "face"){
+        $("#back_specs").remove();
+      }else{
+        $("#face_specs").remove();
+      }
+    })
+  })

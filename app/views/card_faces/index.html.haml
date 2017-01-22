@@ -1,0 +1,77 @@
+%h1 Listing card faces
+= link_to 'New Card face', new_card_face_path, class: 'btn btn-primary pull-right'
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th 
+        Family
+        %br/ 
+        Face
+        %br/
+        Print seq
+        %br/
+        Customer num
+        %br/ 
+        Plate
+        %br/
+        Card size
+      %th Hd color
+      %th Ace type
+      %th Is ace serial
+      %th Is custom ta
+      %th Joker1
+      %th Joker2
+      %th Ad1 type
+      %th Ad2 type
+      %th Job
+      %th Art
+      %th Last modified by
+      %th M36
+      %th M40
+      %th Approved date
+      %th Customer approved by
+      %th Approved by
+      %th Comments
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_faces.each do |card_face|
+      %tr
+        %td
+          = card_face.family_id
+          %br/
+          = card_face.face_id
+          %br/
+          = card_face.print_seq_id
+          %br/
+          = card_face.customer_num
+          %br/
+          = card_face.plate_id
+          %br/
+          = card_face.card_size_id
+        %td= card_face.hd_color
+        %td= card_face.ace_type_id
+        %td= card_face.is_ace_serial
+        %td= card_face.is_custom_ta
+        %td= card_face.joker1_id
+        %td= card_face.joker2_id
+        %td= card_face.ad1_type_id
+        %td= card_face.ad2_type_id
+        %td= card_face.job_id
+        %td= card_face.art_id
+        %td= card_face.last_modified_by
+        %td= card_face.m36_id
+        %td= card_face.m40_id
+        %td= card_face.approved_date
+        %td= card_face.customer_approved_by
+        %td= card_face.approved_by
+        %td= card_face.comments
+        %td= link_to 'Show', card_face
+        %td= link_to 'Edit', edit_card_face_path(card_face)
+        %td= link_to 'Destroy', card_face, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

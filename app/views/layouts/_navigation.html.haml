@@ -1,0 +1,18 @@
+%nav
+  .nav-wrapper
+    %ul.left.hide-on-med-and-down
+      %li
+        %a#logo{:href => "#!"}
+    %ul.right.hide-on-med-and-down
+      %li
+        %a{"ui-sref" => "artist"}
+          Artist
+      %li
+        %a{:href => "#"}
+          %i.material-icons chat
+      %li
+        %a{:href => "#"}
+          %i.material-icons live_help
+      %li
+        = link_to destroy_user_session_path, method: :delete do
+          %i.material-icons more_vert

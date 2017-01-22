@@ -1,0 +1,2 @@
+class MfgUnitPolicy < ApplicationPolicy
+end

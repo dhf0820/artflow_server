@@ -1,0 +1,2 @@
+module CardPapersHelper
+end

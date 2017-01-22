@@ -1,0 +1,73 @@
+%h3.text-center Casino Card Art Request Details 
+.panel.panel-section
+  .row
+    .col-md-offset-9.col-md-3
+      %p
+        %b Job no:
+        = @casino_card_art_request.job_no
+  .row
+    .col-md-3
+      %p
+        %b Customer #:
+        = @casino_card_art_request.customer_id
+    .col-md-3
+      %p
+        %b Customer:
+        = @casino_card_art_request.customer_details
+    .col-md-3
+      %p
+        %b Name:
+        = @casino_card_art_request.customer_name
+    .col-md-3
+      %p
+        %b Phone:
+        = @casino_card_art_request.customer_phone
+  .row
+    .col-md-4
+      %p
+        %b Paper type:
+        = @casino_card_art_request.paper_type.name if @casino_card_art_request.paper_type
+    .col-md-4
+      %p
+        %b Card type:
+        = @casino_card_art_request.card_type.name if @casino_card_art_request.card_type
+- @casino_card_art_request.art_request_specifications.each do |specification|
+  .panel.panel-section
+    %h3 Specifications:
+    .panel.panel-section
+      .row
+        .col-md-3
+          %b Card Side :
+          = specification.card_side_id
+        .col-md-3
+          %b Face Style :
+          = specification.face_style.name if specification.face_style
+        .col-md-3
+          %b Card Edge : 
+          = specification.card_edge.name if specification.card_edge
+        .col-md-3
+          %b Packaging : 
+          = specification.card_packaging.name if specification.card_packaging
+    .panel.panel-section
+      .row
+        .col-md-3
+          %b First Color :
+          = specification.first_color.name if specification.first_color
+        .col-md-3
+          %b Second Color :
+          = specification.second_color.name if specification.second_color
+        .col-md-3
+          %b Third Color : 
+          = specification.third_color.name if specification.third_color
+        .col-md-3
+          %b Forth Color : 
+          = specification.forth_color.name if specification.forth_color
+    .panel.panel-section
+      .row
+        .col-md-12
+          %b Production notes :  
+          = specification.production_notes
+
+= link_to 'Edit', edit_art_request_casino_card_art_request_path(@art_request, @casino_card_art_request)
+\|
+= link_to 'Back', art_request_casino_card_art_requests_path(@art_request)

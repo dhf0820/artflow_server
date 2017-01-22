@@ -1,0 +1,3 @@
+class CardFaceType < ApplicationRecord
+
+end

@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Sage:
+  = @customer.sage_id
+%p
+  %b Name:
+  = @customer.name
+%p
+  %b Address1:
+  = @customer.address1
+%p
+  %b Address2:
+  = @customer.address2
+%p
+  %b Address3:
+  = @customer.address3
+%p
+  %b Contact name:
+  = @customer.contact_name
+%p
+  %b Contact email:
+  = @customer.contact_email
+%p
+  %b Contact phone:
+  = @customer.contact_phone
+
+= link_to 'Edit', edit_customer_path(@customer)
+\|
+= link_to 'Back', customers_path

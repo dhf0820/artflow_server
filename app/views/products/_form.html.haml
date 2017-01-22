@@ -1,0 +1,5 @@
+= simple_form_for @product do |f|
+  = f.input :name
+  = f.input :desc
+  = f.input :product_type_id, collection: ProductType.all
+  = f.button :submit, "Save"

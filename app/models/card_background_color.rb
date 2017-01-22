@@ -1,0 +1,3 @@
+class CardBackgroundColor < ApplicationRecord
+
+end

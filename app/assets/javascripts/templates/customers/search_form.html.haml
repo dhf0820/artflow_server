@@ -1,0 +1,53 @@
+%form{:id => "cust_form"}
+  .form-fields
+    .row.no-margin
+      .input-field.col.s4
+        %label Customer #:
+        %input{"ng-model" => "customer.sage_id", :type => "text"}
+          %a.right.search-icon{:href => "", "ng-click" => "searchCustomer(customer)"}
+            %i.material-icons.search-customer search
+      .input-field.col.s4
+        #single.autocomplete
+          .ac-input
+            %input#singleInput{"auto_complete"=> "", :autocomplete => "off", "data-activates" => "singleDropdown", "data-beloworigin" => "true", :placeholder => "Please input some letters", :type => "text"}/
+          %ul#singleDropdown.dropdown-content.ac-dropdown
+      .input-field.col.s4
+        %label Casino Name:
+        %input{"ng-model" => "customer.name", :type => "text"}
+      .input-field.col.s3
+        %label Sales Rep:
+        %select{"material-select" => "", "ng-model" => "customer.sales_rep_id", "ng-options" => "s.id as s.name for s in sales_reps track by s.id", "update_met_field" => ""}
+    .row.no-margin
+      .input-field.col.s4
+        %label Address
+        %input{"ng-model" => "customer.address1", :type => "text"}
+      .input-field.col.s4
+        %label Contact Name
+        %input{"ng-model" => "customer.contact_name", :type => "text"}
+    .row.no-margin
+      .input-field.col.s4
+        %label Address2
+        %input{"ng-model" => "customer.address2", :type => "text"}
+      .input-field.col.s4
+        %label Email
+        %input{"ng-model" => "customer.contact_email", :type => "text"}
+    .row.no-margin
+      .input-field.col.s1
+        %label Email
+        %input{"ng-model" => "customer.city", :type => "text"}
+      .input-field.col.s1
+        %label State
+        %input{"ng-model" => "customer.state", :type => "text"}
+      .input-field.col.s2
+        %label Postal Code
+        %input{"ng-model" => "customer.postal_code", :type => "text"}
+      .input-field.col.s4
+        %label Phone
+        %input{"ng-model" => "customer.contact_phone", :type => "text"}
+
+  .submit-btn.right
+    .row
+      %a.btn-floating.waves-effect.waves-light.btn.btn-small.red.reset-form{"ng-click"=> "backToIndex()"}
+        %i.material-icons.center{style: "font-size: 2em"} clear
+      %button.btn-floating.waves-effect.waves-light.btn.btn-small{"ng-click" => "createCustomer(customer)"}
+        %i.material-icons.center{style: "font-size: 2em"} done

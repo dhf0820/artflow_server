@@ -1,0 +1,72 @@
+.card-panel
+  %form.form{:style => "margin-bottom: 0px;"}
+    .row{:style => "border-bottom: 1px solid #291818"}
+      .col.s12
+        %span.col.s4
+          Customer #:
+          {{ customer.sage_id }}
+        %span.col.s4
+          Casino:
+          {{ customer.name }}
+        %span.col.s4
+          Sales Rep:
+          {{ sales_rep.name }} 
+    .row{:style => "margin-bottom: 0px;"}
+      .col.s12
+        %span.col.s4
+          .label-text
+            Art Requested Date #:
+          .label-text
+            %input.datepicker{:type => "text",  "ng-model" => "art_request.art_requested_date", "date_picker" => ""}
+        %span.col.s4
+          .label-text
+            Shipment Date:
+          .label-text
+            %input.datepicker{:type => "text",  "ng-model" => "art_request.shipment_date", "date_picker" => ""}
+        %span.col.s4
+          Attachements:
+          %a{:href => "#"}
+            2
+  .row
+    %ul
+      %li
+        .col.s12.product-header.min-padding{:style => "height: 3.9em;"}
+          .col.s3.custom-s3{:style => "margin-right: -51px;"}
+            .left.rpad
+              %label Product:
+              %select{"material-select" => "", "ng-model" => "art_request.product_id", "ng-options" => "p.id as p.name for p in details.products track by p.id"}
+
+          .col.s9{:style => "width: 80%;"}
+            .col.s3.custom-s3
+              .left.rpad
+                %label Design:
+                %select{"material-select" => "", "ng-model" => "art_request.card_art_request.design_id", "ng-options" => "d.id as d.name for d in details.designs track by d.id"}
+            .col.s4.custom-s4{"ng-show" => "art_request.card_art_request.design_id"}
+              .left.rpad{"style" => "width:72%"}
+                %label Card Stock:
+                %select{"material-select" => "", "ng-model" => "art_request.card_art_request.card_stock_id", "ng-options" => "st.id as st.name for st in details.card_stock_types track by st.id"}
+            .col.s3.custom-cardtype{"ng-show" => "art_request.card_art_request.card_stock_id"}
+              .left.rpad{"style" => "width:42%"}
+                %label Card Type:
+                %select{"material-select" => "", "ng-model" => "art_request.card_art_request.card_type_id", "ng-options" => "ct.id as ct.name for ct in details.card_types track by ct.id"}
+              .left{:style => "padding-left: 13px;padding-top:9px;clear: both;position: absolute;right: 119px;", "ng-show" => "art_request.card_art_request.card_type_id"}
+                %a{:href => "#", "ng-click" => "addNewSpec(spec,'N')", "add_spec" => ""}
+                  Add Specification 
+        .col.s12.min-padding{:style => "margin-top: -7px;"}
+          %div.new_spec_message{"ng-show" => "art_request.card_art_request.card_type_id"}
+            No specifications created. Select "Add Specification" to begin
+            %p
+              %a{:href => "#", "ng-click" => "addNewSpec(spec,'N')", "add_spec" => ""}
+                Add Specification
+                %img.add_spec_icon{:src => "/assets/plus.png"}
+          %ul.collapsible.new_spec{"data-collapsible" => "accordion", "ng-show" => "new_spec", :watch => ""}
+%button.btn.left{"ng-click" => "backToIndex()"} Back
+%button.btn.right{"ng-click" => "createArtRequest(art_request)"} Submit
+
+:css
+  .product-header .select-wrapper input.select-dropdown{
+    height: 1em !important;
+  }
+  textarea.materialize-textarea{
+    padding: 0px !important;
+  }

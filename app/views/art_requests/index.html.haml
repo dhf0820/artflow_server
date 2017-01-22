@@ -1,0 +1,48 @@
+.row
+  .col.s12
+    = form_tag search_art_requests_path, :method => 'get' do
+      .col.s2{:style => "padding-top: 18px;"}
+        = select_tag :search_flag, options_for_select([["Customer","cust_name"],["Customer ID","cust_id"], ["Art ID","art_id"], ["Product","product"]], @flag)
+        / %select{:name => params[:search_flag]}
+        /   %option{:disabled => "disabled", :selected => "selected", :value => ""} Customer
+        /   %option{:value => "cust_name"} Customer
+        /   %option{:value => "cust_id"} Customer ID
+        /   %option{:value => "art_id"} Art ID
+        /   %option{:value => "prod_id"} Product
+      .col.s2
+        = text_field_tag :search, params[:search]
+      .col.s1{:style => "padding-top: 28px"}
+        = submit_tag "GO", :name => nil
+        / %button{:type => "submit"} GO
+    .col.s2{:style => "padding-top: 28px"}
+      View: My Requests
+    .col.s2{:style => "padding-top: 28px"}
+      Order by: Job Id
+    .col.s2{:style => "padding-top: 28px"}
+      = link_to new_art_request_path(flag: "CUSTOMER"), class: 'right' do
+        New Art request
+%ul.cps{"data-collapsible" => "expandable"}
+  - @art_requests.each do |ar|
+    %li
+      .collapsible-header.jheader
+        %span.jtext.jcustom-space
+          Job Id:
+          = ar.id
+        %span.jtext.jcustom-space=ar.customer.name
+        %span.jtext.jcustom-space
+          Status: Submitted
+        %span.jtext.jcustom-space
+          Artist:
+          =ar.sales_rep.name unless ar.sales_rep.blank?
+        %span.jtext
+          Ship Date:
+          =ar.art_requested_date.strftime("%m/%d/%Y") unless ar.art_requested_date.blank?
+        %span.edits.right
+          %i.material-icons.collap visibility
+        %span.edits.right
+          = link_to edit_art_request_path(ar) do
+            %i.material-icons mode_edit 
+      .collapsible-body
+        = render partial: 'status', locals: {:car => ar.card_art_request}
+        = render partial: 'specs', locals: {:car => ar.card_art_request}
+%br

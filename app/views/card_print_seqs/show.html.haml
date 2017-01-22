@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @card_print_seq.name
+%p
+  %b Desc:
+  = @card_print_seq.desc
+
+= link_to 'Edit', edit_card_print_seq_path(@card_print_seq)
+\|
+= link_to 'Back', card_print_seqs_path

@@ -1,0 +1,1 @@
+json.array! @mfg_units, partial: 'mfg_units/mfg_unit', as: :mfg_unit

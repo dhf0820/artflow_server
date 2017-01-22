@@ -1,0 +1,36 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.select1{
+
+   width:60%;
+   margin-top: 0rem;
+}
+.select2{
+
+   width:60%;
+   margin-top: 0rem;
+}
+.row{
+
+  margin-bottom: 0px;
+}
+.li.collection-item.avatar{
+  padding-left: 100px;
+}
+
+.select1 .select-wrapper input.select-dropdown {
+    margin: 0 0 0px 0;
+}

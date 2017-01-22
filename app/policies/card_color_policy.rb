@@ -1,0 +1,2 @@
+class CardColorPolicy < ApplicationPolicy
+end

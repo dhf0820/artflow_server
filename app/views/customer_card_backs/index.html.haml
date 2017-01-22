@@ -1,0 +1,43 @@
+%h1 Listing Customer Card Backs
+= link_to 'New Customer card back', new_customer_card_back_path, class: 'btn btn-primary pull-right'
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Family
+      %th Back
+      %th Print seq
+      %th Customer number
+      %th Card size
+      %th Plate
+      %th Job
+      %th Art
+      %th Approved date
+      %th Customer approved by
+      %th Approval entered by
+      %th Comments
+      %th
+      %th
+      %th
+
+  %tbody
+    - @customer_card_backs.each do |customer_card_back|
+      %tr
+        %td= customer_card_back.family_id
+        %td= customer_card_back.back_id
+        %td= customer_card_back.print_seq_id
+        %td= customer_card_back.customer_number
+        %td= customer_card_back.card_size_id
+        %td= customer_card_back.plate_id
+        %td= customer_card_back.job_id
+        %td= customer_card_back.art_id
+        %td= customer_card_back.approved_date
+        %td= customer_card_back.customer_approved_by
+        %td= customer_card_back.approval_entered_by
+        %td= customer_card_back.comments
+        %td= link_to 'Show', customer_card_back
+        %td= link_to 'Edit', edit_customer_card_back_path(customer_card_back)
+        %td= link_to 'Destroy', customer_card_back, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

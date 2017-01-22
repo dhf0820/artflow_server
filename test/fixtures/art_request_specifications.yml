@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  card_side_id: 1
+  face_style_id: 1
+  packaging_type_id: 1
+  first_color_id: 1
+  second_color_id: 1
+  third_color_id: 1
+  forth_color_id: 1
+  production_notes: MyText
+
+two:
+  card_side_id: 1
+  face_style_id: 1
+  packaging_type_id: 1
+  first_color_id: 1
+  second_color_id: 1
+  third_color_id: 1
+  forth_color_id: 1
+  production_notes: MyText

@@ -1,0 +1,49 @@
+.row
+  .col-md-4
+    %p
+      %b Customer:
+      = @art_request.customer_id
+  .col-md-4
+    %p
+      %b Customer details:
+      = @art_request.customer_details
+  .col-md-4
+    %p
+      %b Customer name:
+      = @art_request.customer_name
+    %p
+      %b Customer phone:
+      = @art_request.customer_phone
+    %p
+      %b Customer email:
+      = @art_request.customer_email
+.row
+  .col-md-6
+    %p
+      %b Art requested by:
+      = @art_request.art_requested_by
+  .col-md-6
+    %p
+      %b Ship date:
+      = @art_request.ship_date
+.row
+  .col-md-12
+    %p
+      %b Product types:
+      = @art_request.product_types.collect(&:name).join(", ")
+.row
+  .col-md-12
+    %p
+      %b Attachments:
+      %ul
+        - @art_request.attachments.each do |attach|
+          %li= link_to attach.content_file_name, attach.content.url
+.row
+  .col-md-12
+    %p
+      %b Comments:
+      = @art_request.comments
+
+= link_to 'Edit', edit_art_request_path(@art_request)
+\|
+= link_to 'Back', art_requests_path

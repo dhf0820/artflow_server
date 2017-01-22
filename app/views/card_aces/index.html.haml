@@ -1,0 +1,23 @@
+%h1 Listing card aces
+
+= link_to 'New Ace', new_card_ace_path, class: 'btn btn-primary pull-right'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Code
+      %th Name
+      %th Photo
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_aces.each do |card_ace|
+      %tr
+        %td= card_ace.code
+        %td= card_ace.name
+        %td= image_tag(card_ace.photo.url(:thumb))
+        %td= link_to 'Show', card_ace
+        %td= link_to 'Edit', edit_card_ace_path(card_ace)
+        %td= link_to 'Destroy', card_ace, :method => :delete, :data => { :confirm => 'Are you sure?' }
+

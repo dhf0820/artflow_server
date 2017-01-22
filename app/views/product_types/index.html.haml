@@ -1,0 +1,23 @@
+%h1 Listing product types
+
+= link_to 'New Product type', new_product_type_path, class: 'btn btn-primary pull-right'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Code
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @product_types.each do |product_type|
+      %tr
+        %td= product_type.code
+        %td= product_type.name
+        %td= link_to 'Show', product_type
+        %td= link_to 'Edit', edit_product_type_path(product_type)
+        %td= link_to 'Destroy', product_type, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

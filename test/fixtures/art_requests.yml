@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  customer_details: MyText
+  customer_name: MyString
+  customer_phone: MyString
+  customer_email: MyString
+  art_requested_by: 2016-11-19
+  ship_date: 2016-11-19
+  comments: MyText
+
+two:
+  customer_id: 1
+  customer_details: MyText
+  customer_name: MyString
+  customer_phone: MyString
+  customer_email: MyString
+  art_requested_by: 2016-11-19
+  ship_date: 2016-11-19
+  comments: MyText

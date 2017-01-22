@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  family_id: 1
+  face_id: 1
+  print_seq_id: 1
+  customer_num: MyString
+  plate_id: 1
+  card_size_id: 1
+  hd_color: MyString
+  ace_type_id: 1
+  is_ace_serial: false
+  is_custom_ta: false
+  joker1_id: 1
+  joker2_id: 1
+  ad1_type_id: 1
+  ad2_type_id: 
+  job_id: 1
+  art_id: MyString
+  last_modified_by: 1
+  m36_id: 1
+  m40_id: 1
+  approved_date: 2016-11-09 21:48:13
+  customer_approved_by: MyString
+  approved_by: 1
+  comments: MyText
+
+two:
+  family_id: 1
+  face_id: 1
+  print_seq_id: 1
+  customer_num: MyString
+  plate_id: 1
+  card_size_id: 1
+  hd_color: MyString
+  ace_type_id: 1
+  is_ace_serial: false
+  is_custom_ta: false
+  joker1_id: 1
+  joker2_id: 1
+  ad1_type_id: 1
+  ad2_type_id: 
+  job_id: 1
+  art_id: MyString
+  last_modified_by: 1
+  m36_id: 1
+  m40_id: 1
+  approved_date: 2016-11-09 21:48:13
+  customer_approved_by: MyString
+  approved_by: 1
+  comments: MyText

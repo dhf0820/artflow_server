@@ -1,0 +1,34 @@
+.col.s12.min-padding{:style => "margin-top: -7px;"}
+  %ul.collapsible
+    - car.specs.each do |spec|
+      -# binding.pry
+      - spec_type = spec.class.name == "CardBackSpec" ? "back" : "face"
+      %li
+        .collapsible-header.sheader
+          %span.jtext.jcustom-space
+            = spec.card_set_id
+            -
+            = spec.design_id
+            -
+            = spec.color
+          %span.jtext.jcustom-space
+            - if spec_type == "face"
+              Face Id:
+              = spec.face_type_id
+            - else
+              Back Id:
+              = spec.back_type_id
+          %span.jtext.jcustom-space
+            Art:
+            = car.art_request_id
+          %span.right
+            %i.material-icons
+              play_arrow
+        .collapsible-body
+          .row
+            .speclines.col.s12
+              %span.col.s2
+                Art1234.v1.pdf
+              %span.col.s5  
+                Possible short description of the art file  
+ 

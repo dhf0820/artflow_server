@@ -1,0 +1,88 @@
+= simple_form_for(@customer, :url => new_art_request_path(:flag => "CUST_ART_REQ") ,:html => {class: "col s12", :id => 'cust_form'} , :method => :GET) do |f|
+  .form-fields
+    .row
+      .input-field.col.s4
+        = f.input :sage_id, :label => "Customer #:"
+        %i.material-icons.search-customer search
+      .input-field.col.s4
+        = f.input :name, :label => "Casino Name"
+      .input-field.col.s3
+        = f.input :sales_rep_id, collection: SalesRep.all.map{|s| [s.name, s.id]}, :label => false, :prompt => "Select Sales Rep"
+    .row
+      .input-field.col.s4
+        = f.input :address1, :label => "Address"
+      .input-field.col.s4
+        = f.input :contact_name, :label => "Contact Name"
+    .row
+      .input-field.col.s4
+        = f.input :address2, :label => "Address Line2"
+      .input-field.col.s4
+        = f.input :contact_email, :label => "Email"
+    .row
+      .input-field.col.s1
+        = f.input :city
+      .input-field.col.s1
+        = f.input :state
+      .input-field.col.s2
+        = f.input :postal_code, :label => "Postal Code"
+      .input-field.col.s4
+        = f.input :contact_phone, :label => "Phone"
+      .input-field.col.s4
+        = f.input :flag, :as => :hidden , :input_html => { :value => @customer.new_record? ? "NEW_CUST" : "CUST_ART_REQ"}
+        = f.input :id, :as => :hidden 
+
+  .submit-btn.right
+    .row
+      %a.btn-floating.waves-effect.waves-light.btn.btn-small.red.reset-form
+        %i.material-icons.center{style: "font-size: 2em"} clear
+      = button_tag(type: "submit", class: "btn-floating waves-effect waves-light btn btn-small") do
+        %i.material-icons.center{style: "font-size: 2em"} done 
+
+:css
+  select{
+    display: none;
+  }
+:javascript
+  $( document ).ready(function()   {
+    //location.reload();
+    $(".reset-form").click(function(){
+      location.reload();
+    });
+
+    $('#customer_sales_rep_id').material_select();
+
+    $('input.autocomplete').autocomplete({
+      source: '/customers/autocomplete.json',
+      autoFocus:true,
+      select: function(event, ui) { 
+        console.log(ui.item);
+        $("#term").val(ui.item.label);
+        $("#customer_id").val(ui.item.value);
+        $.ajax({
+          type: "GET",
+          dataType: "json",
+          data: {value: $("#customer_id").val()},
+          url: "/customers/customer_search",
+          success: function(data){
+            //console.log(data);
+            $(".customer-from").html(data.attachmentPartial)
+          }
+        }); 
+      }
+    });
+    $(".search-customer").click(function(){
+
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        data: {value: $("#customer_sage_id").val()},
+        url: "/customers/customer_search",
+        success: function(data){
+          console.log(data);
+          $(".customer-from").html(data.attachmentPartial);
+          Materialize.updateTextFields();
+          $("#flag").val("CUST_FOUND");
+        }
+      }); 
+    });
+  });

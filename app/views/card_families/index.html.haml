@@ -1,0 +1,24 @@
+%h1 Listing card families
+
+= link_to 'New Card family', new_card_family_path, class: 'btn btn-primary pull-right'
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Code
+      %th Side
+      %th Desc
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_families.each do |card_family|
+      %tr
+        %td= card_family.code
+        %td= card_family.side
+        %td= card_family.desc
+        %td= link_to 'Show', card_family
+        %td= link_to 'Edit', edit_card_family_path(card_family)
+        %td= link_to 'Destroy', card_family, :method => :delete, :data => { :confirm => 'Are you sure?' }
+

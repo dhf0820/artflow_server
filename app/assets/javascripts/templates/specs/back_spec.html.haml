@@ -1,0 +1,42 @@
+.collapsible-header.specheader{"ng-init" => "spec.spectype = 'back'"}
+  %span.jtext.spec-space
+    {{ spec.spectype }} 
+  %span.jtext.right
+    %i.close.material-icons.small library_books
+  %span.jtext.spec-space.right
+    Art Id: {{ art_request.id }}
+.collapsible-body
+  #face_specs
+    .row
+      .speclines.col.s12
+        %span.col.s2
+          %ul
+            %li.label
+              Side: 
+            %li
+              %select{"material-select" => "", "ng-model" => "spec.spectype"}
+                %option{:value => "back"} Back
+        %span.col.s2
+          %ul
+            %li.label
+              Back Style:
+            %li
+              %select{"material-select" => "", "ng-model" => "spec.back_type_id", "ng-options" => "ft.id as ft.name for ft in card_back_types"}
+        %span.col.s2
+          Face Color:
+          %select{"material-select" => "", "ng-model" => "spec.color"}
+            %option{:value => "106", :selected => "selected", "data-style" => "background-color: #ffc800;"}
+              GOLD
+            %option{"data-color" => "#CD5C5C", :value => "47","data-style" => "background-color: green;"} GREEN
+    .row
+      .speclines.col.s12
+        %span.col.s6
+          %label Comments
+          %textarea.materialize-textarea{"ng-model" => "spec.comments"}
+          %label Reference Attachments
+          .chip
+            Winnlogbw.png
+            %i.close.material-icons close
+        .left{:style => "padding-left: 60px"}
+          %image.qcard{:src => '/assets/queen-spades.png'}
+          %image.qcard{:src => '/assets/queen-spades.png'}

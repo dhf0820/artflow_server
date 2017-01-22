@@ -1,0 +1,84 @@
+.col.s12.min-padding{:style => "margin-top: -7px;"}
+  %ul.collapsible{"data-collapsible" => "accordion"}
+    - car.specs.each do |s|
+      - spec_type,op_spec_type = s.class.name == "CardBackSpec" ? ["back","face"] : ["face","back"]
+      - if spec_type == "face"
+        %li
+          .collapsible-header.specheader
+            %span.jtext.spec-space
+              = spec_type.capitalize
+              &nbsp;
+              = "-"
+              &nbsp;
+              = s.color
+            %span.jtext.spec-space
+              Art Id: 1235
+            %span.jtext.spec-space
+              Finished
+            %span.jtext.spec-space
+              Activity: Approved
+          .collapsible-body
+            = ca.fields_for :card_face_specs do |fs|
+              .row
+                .speclines.col.s12
+                  %span.col.s2
+                    %ul
+                      %li.label
+                        Side: 
+                      %li
+                        %select
+                          %option{:value => spec_type ,:selected => "selected"}= spec_type.capitalize
+                          %option{:value => op_spec_type}= op_spec_type.capitalize
+                  %span.col.s3
+                    %ul
+                      %li.label
+                        Face Style:
+                      %li
+                        = fs.input :face_type_id, collection: CardFaceType.all.map{|ft| [ft.name, ft.id]}, :label => false
+                        / %select
+                          
+                        /   %option{:selected => "selected", :value => ""} Traditional - GEMACO
+                        /   %option{:value => "1"} Back
+                  %span.col.s2
+                    %ul
+                      %li.label
+                        Ace:
+                      %li
+                        = fs.input :ace_id, collection: CardAceType.all.map{|ft| [ft.name, ft.id]}, :label => false
+                        / %select
+                        /   %option{:disabled => "disabled", :selected => "selected", :value => ""} Gemaco
+                        /   %option{:value => "1"} Back
+                  %span.col.s2
+                    %ul
+                      %li.label
+                        Joker:
+                      %li
+                        = fs.input :joker_id, collection: CardJokerType.all.map{|ft| [ft.name, ft.id]}, :label => false
+                        / %select
+                        /   %option{:disabled => "disabled", :selected => "selected", :value => ""} None
+                        /   %option{:value => "1"} Back
+              .row
+                .speclines.col.s12
+                  %span.col.s6
+                    Comments
+                    = fs.input :comments, :label => false
+                    / %textarea#textarea1{:cols => "50", :rows => "4"}
+                  %span.col.s3
+                    Face Color:
+                    = fs.input :color, :collection => [["GOLD","GOLD"],["GREEN","GREEN"]], :label => false, :selected => "GOLD"
+                    / %select
+                    /   %option{:disabled => "disabled", :selected => "selected", :value => ""} Gold
+                    /   %option{:value => "1"} Green
+                    %span 
+                      Selected Colors
+                    %br
+                    %span
+                      1.Green
+                      2.Gold
+              .row
+                .speclines.col.s12
+                  %span.col.s6
+                    Reference Attachments
+                    .chip
+                      Winnlogbw.png
+                      %i.close.material-icons close

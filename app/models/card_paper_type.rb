@@ -1,0 +1,3 @@
+class CardPaperType < ApplicationRecord
+
+end

@@ -1,0 +1,6 @@
+= simple_form_for @job do |f|
+  = f.input :customer_num
+  = f.input :product_id, collection: Product.all
+  = f.input :packaging_id, collection: Packaging.all
+  = f.input :card_paper_id, collection: CardPaper.all
+  = f.button :submit, "Save"

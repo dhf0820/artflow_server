@@ -1,0 +1,27 @@
+%h1 Listing card colors
+
+= link_to 'New Card color', new_card_color_path, class: 'btn btn-primary pull-right'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Name
+      %th C
+      %th Y
+      %th M
+      %th K
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_colors.each do |card_color|
+      %tr
+        %td= card_color.name
+        %td= card_color.c
+        %td= card_color.y
+        %td= card_color.m
+        %td= card_color.k
+        %td= link_to 'Show', card_color
+        %td= link_to 'Edit', edit_card_color_path(card_color)
+        %td= link_to 'Destroy', card_color, :method => :delete, :data => { :confirm => 'Are you sure?' }
+

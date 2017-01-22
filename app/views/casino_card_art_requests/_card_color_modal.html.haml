@@ -1,0 +1,17 @@
+#cardColorModal.modal.fade{:role => "dialog"}
+  = simple_form_for CardColor.new, remote: true do |f|
+    = f.input :user_generated, as: :hidden, input_html: { value: 1 }
+    .modal-dialog.modal-sm
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h4.modal-title Custom color
+        .modal-body
+          = f.input :name
+          = f.input :c
+          = f.input :y
+          = f.input :m
+          = f.input :k
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+          = f.button :submit, "Save", class: 'btn btn-primary'

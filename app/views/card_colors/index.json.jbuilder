@@ -1,0 +1,1 @@
+json.array! @card_colors, partial: 'card_colors/card_color', as: :card_color

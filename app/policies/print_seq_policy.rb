@@ -1,0 +1,2 @@
+class PrintSeqPolicy < ApplicationPolicy
+end

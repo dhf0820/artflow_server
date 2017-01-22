@@ -1,0 +1,1 @@
+json.array! @art_requests, partial: 'art_requests/art_request', as: :art_request

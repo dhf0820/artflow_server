@@ -1,0 +1,1 @@
+json.partial! "card_papers/card_paper", card_paper: @card_paper

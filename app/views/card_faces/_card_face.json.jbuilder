@@ -1,0 +1,2 @@
+json.extract! card_face, :id, :family_id, :face_id, :print_seq_id, :customer_num, :plate_id, :card_size_id, :hd_color, :ace_type_id, :is_ace_serial, :is_custom_ta, :joker1_id, :joker2_id, :ad1_type_id, :ad2_type_id, :job_id, :art_id, :last_modified_by, :m36_id, :m40_id, :approved_date, :customer_approved_by, :approved_by, :comments, :created_at, :updated_at
+json.url card_face_url(card_face, format: :json)

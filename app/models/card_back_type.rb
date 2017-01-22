@@ -1,0 +1,3 @@
+class CardBackType < ApplicationRecord
+
+end

@@ -1,0 +1,3 @@
+class CardFaceColor < ApplicationRecord
+
+end

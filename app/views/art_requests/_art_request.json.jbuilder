@@ -1,0 +1,2 @@
+json.extract! art_request, :id, :customer_id, :customer_details, :customer_name, :customer_phone, :customer_email, :art_requested_by, :ship_date, :comments, :created_at, :updated_at
+json.url art_request_url(art_request, format: :json)

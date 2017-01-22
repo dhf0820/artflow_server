@@ -1,0 +1,27 @@
+%h1 Listing jobs
+
+= link_to 'New Job', new_job_path, class: 'btn btn-primary pull-right'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Customer num
+      %th Product
+      %th Packaging
+      %th Card paper
+      %th
+      %th
+      %th
+
+  %tbody
+    - @jobs.each do |job|
+      %tr
+        %td= job.customer_num
+        %td= job.product_id
+        %td= job.packaging_id
+        %td= job.card_paper_id
+        %td= link_to 'Show', job
+        %td= link_to 'Edit', edit_job_path(job)
+        %td= link_to 'Destroy', job, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

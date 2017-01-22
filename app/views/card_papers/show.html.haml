@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Code:
+  = @card_paper.code
+%p
+  %b Name:
+  = @card_paper.name
+%p
+  %b Finish:
+  = @card_paper.finish
+
+= link_to 'Edit', edit_card_paper_path(@card_paper)
+\|
+= link_to 'Back', card_papers_path

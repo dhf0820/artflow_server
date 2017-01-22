@@ -1,0 +1,65 @@
+.card-panel
+  %form.form
+    .row{:style => "border-bottom: 1px solid #291818"}
+      .col.s12
+        %span.col.s4
+          Customer #:
+          {{ art_request.customer.sage_id }}
+        %span.col.s4
+          Casino:
+          {{ art_request.customer.name }}
+        %span.col.s4
+          Sales Rep:
+          {{ art_request.sales_rep.name }} 
+    .row
+      .col.s12
+        %span.col.s4
+          Art Requested Date #:
+          {{ art_request.art_requested_date | date:'MM/dd/yyyy' }}
+        %span.col.s4
+          Shipment Date:
+          {{ art_request.shipment_date | date:'MM/dd/yyyy' }}
+        %span.col.s4
+          Attachements:
+          %a{:href => "#"}
+            2
+  .row
+    %ul
+      %li
+        .col.s12.product-header.min-padding{:style => "height: 3.9em;"}
+          .col.s3.custom-s3{:style => "margin-right: -51px;"}
+            .left.rpad
+              %label Product:
+              %select{"material-select" => "", "ng-model" => "art_request.product_id", "ng-options" => "p.id as p.name for p in details.products"}
+
+          .col.s9{:style => "width: 80%;"}
+            .col.s3.custom-s3
+              .left.rpad
+                %label Design:
+                %select{"material-select" => "", "ng-model" => "art_request.card_art_request.design_id", "ng-options" => "d.id as d.name for d in details.designs"}
+            .col.s4.custom-s4
+              .left.rpad{"style" => "width:72%"}
+                %label Card Stock:
+                %select{"material-select" => "", "ng-model" => "art_request.card_art_request.card_stock_id", "ng-options" => "st.id as st.name for st in details.card_stock_types"}
+            .col.s3.custom-cardtype
+              .left.rpad{"style" => "width:42%"}
+                %label Card Type:
+                %select{"material-select" => "", "ng-model" => "art_request.card_art_request.card_type_id", "ng-options" => "ct.id as ct.name for ct in details.card_types"}
+              .left{:style => "padding-left: 13px;padding-top:9px;clear: both;position: absolute;right: 119px;"}
+                %a{:href => "#", "ng-click" => "addNewSpec(spec,'E')", "add_spec" => ""}
+                  Add Specification 
+        .col.s12.min-padding{:style => "margin-top: -7px;"}
+          %ul.collapsible.edit_spec{"data-collapsible" => "accordion"}
+            %li{"ng-repeat"=> "spec in art_request.card_art_request.card_face_specs", "ng-include" => "\"specs/face_spec.html\""}
+            %li{"ng-repeat"=> "spec in art_request.card_art_request.card_back_specs", "ng-include" => "\"specs/back_spec.html\""}
+
+%button.btn.left{"ng-click" => "backToIndex()"} Back
+%button.btn.right{"ng-click" => "updateArtReques(art_request)"} Update
+
+:css
+  .product-header .select-wrapper input.select-dropdown{
+    height: 1em !important;
+  }
+  textarea.materialize-textarea{
+    padding: 0px !important;
+  }

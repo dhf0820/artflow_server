@@ -1,0 +1,72 @@
+.container
+  .panel.panel-default
+    .panel-heading
+      %h3 New Art Request
+    .panel-body
+      = simple_nested_form_for(@art_request, :html => { :class => 'form-inline'}) do |f|
+        = f.error_notification
+
+        .form-inputs
+          .panel.panel-section
+            .row
+              .col-md-4
+                = f.input :customer_id, label: 'Customer #:'
+              .col-md-4
+                = f.input :customer_details, label: 'Customer:', as: :text, input_html: {rows: 3}
+              .col-md-4
+                .panel.panel-section
+                  %legend Contact
+                  %table.contact-table 
+                    %tr
+                      %td
+                        %label Name:
+                      %td
+                        = f.input :customer_name, label: false
+                    %tr
+                      %td
+                        %label Phone:
+                      %td
+                        = f.input :customer_phone, label: false
+                    %tr
+                      %td
+                        %label Email:
+                      %td
+                        = f.input :customer_email, label: false
+          
+          .row
+            .col-md-6
+              = f.input :art_requested_by, as: :date_time_picker
+            .col-md-6
+              = f.input :ship_date, as: :date_time_picker
+
+
+          %br
+          .panel.panel-section
+            .row
+              .col-md-12
+                %legend Product Categories
+                = f.association :product_types, as: :check_boxes, collection: ProductType.all.to_a, label_method: :name, label: false
+          .panel.panel-section
+            .row
+              .col-md-12
+                = f.label "Attachment"
+                = f.fields_for :attachments do |a|
+                  .col-md-12
+                    .col-md-4
+                      .pull-right= a.link_to_remove "x", class: 'rounded'
+                      - unless a.object.new_record?
+                        = a.object.content_file_name
+                      - else
+                        //= a.input :content, label: false
+                = f.link_to_add "Add attachment", :attachments, class: 'btn btn-mini btn-default'
+          .panel.panel-section
+            .row
+              .col-md-12
+                %legend Comments
+                .input-group-lg
+                  = f.input :comments, label: false, input_html: { :cols => 120, :rows => 3}
+        .panel.panel-section
+          = f.button :submit, "Next >>", class: 'btn btn-primary'
+          = link_to "GoBack", :back, class: 'btn btn-default pull-right'
+    .panel-footer
+

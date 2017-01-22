@@ -1,0 +1,1 @@
+json.partial! "card_colors/card_color", card_color: @card_color

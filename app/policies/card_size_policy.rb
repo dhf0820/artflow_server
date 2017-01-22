@@ -1,0 +1,2 @@
+class CardSizePolicy < ApplicationPolicy
+end

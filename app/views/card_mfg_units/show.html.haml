@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @card_mfg_unit.name
+%p
+  %b Desc:
+  = @card_mfg_unit.desc
+%p
+  %b Itsmshnam:
+  = @card_mfg_unit.itsmshnam
+%p
+  %b Product:
+  = @card_mfg_unit.product_id
+%p
+  %b Dsp order:
+  = @card_mfg_unit.dsp_order
+%p
+  %b Pkg count:
+  = @card_mfg_unit.pkg_count
+
+= link_to 'Edit', edit_card_mfg_unit_path(@card_mfg_unit)
+\|
+= link_to 'Back', card_mfg_units_path

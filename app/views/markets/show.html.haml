@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @market.name
+%p
+  %b Desc:
+  = @market.desc
+
+= link_to 'Edit', edit_market_path(@market)
+\|
+= link_to 'Back', markets_path

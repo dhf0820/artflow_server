@@ -1,0 +1,53 @@
+%li
+  .collapsible-header.specheader
+    %span.jtext.spec-space
+      = spec_type.capitalize
+      &nbsp;
+      = "-"
+      &nbsp;
+      = s.color
+    %span.jtext.spec-space
+      Art Id: 1235
+    %span.jtext.spec-space
+      Finished
+    %span.jtext.spec-space
+      Activity: Approved
+  .collapsible-body
+    = ca.fields_for :card_back_specs do |bs|
+      .row
+        .speclines.col.s12
+          %span.col.s2
+            %ul
+              %li.label
+                Side: 
+              %li
+                %select
+                  %option{:value => spec_type ,:selected => "selected"}= spec_type.capitalize
+                  %option{:value => op_spec_type}= op_spec_type.capitalize
+          %span.col.s4
+            %ul
+              %li.label
+                Back Style:
+              %li
+                = bs.input :back_type_id, collection: CardBackType.all.map{|ft| [ft.name, ft.id]}, :label => false
+      .row
+        .speclines.col.s12
+          %span.col.s6
+            Comments
+            = bs.input :comments, :label => false
+          %span.col.s3
+            Back Color:
+            = bs.input :color, :collection => [["GOLD","GOLD"],["GREEN","GREEN"]], :label => false, :selected => "GOLD"
+            / %span 
+            /   Selected Colors
+            / %br
+            / %span
+            /   1.Green
+            /   2.Gold
+      .row
+        .speclines.col.s12
+          %span.col.s6
+            Reference Attachments
+            .chip
+              Winnlogbw.png
+              %i.close.material-icons close

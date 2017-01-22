@@ -1,0 +1,25 @@
+%h1 Listing card edges
+= link_to 'New Card edge', new_card_edge_path, class: 'btn btn-primary pull-right'
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Name
+      %th Desc
+      %th Photo
+      %th
+      %th
+      %th
+
+  %tbody
+    - @card_edges.each do |card_edge|
+      %tr
+        %td= card_edge.name
+        %td= card_edge.desc
+        %td= image_tag(card_edge.photo.url(:thumb))
+        %td= link_to 'Show', card_edge
+        %td= link_to 'Edit', edit_card_edge_path(card_edge)
+        %td= link_to 'Destroy', card_edge, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+

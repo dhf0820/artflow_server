@@ -1,0 +1,1 @@
+json.partial! "casino_card_art_requests/casino_card_art_request", casino_card_art_request: @casino_card_art_request

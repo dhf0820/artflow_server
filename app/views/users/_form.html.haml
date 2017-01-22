@@ -1,0 +1,23 @@
+= simple_form_for @user do |f|
+  .col-md-6
+    = f.input :email
+    = f.input :password, as: :password
+    = f.input :password_confirmation, as: :password
+    %hr/
+    = f.input :domain
+    = f.input :name
+    = f.input :phone_no
+    = f.input :address_line_1, label: "Address"
+    = f.input :address_line_2, label: false
+    = f.input :address_line_3, label: false
+    = f.button :submit, "Save" 
+  .col-md-6
+    %div
+      %b Roles
+    %div
+      %input{name: 'roles[]', value: "admin", type: :checkbox, checked: :checked} Admin
+    %div
+      %input{name: 'roles[]', value: "artist", type: :checkbox} Artist
+    %div
+      %input{name: 'roles[]', value: "csr", type: :checkbox} CSR
+  

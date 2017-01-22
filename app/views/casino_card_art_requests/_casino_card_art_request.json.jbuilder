@@ -1,0 +1,2 @@
+json.extract! casino_card_art_request, :id, :customer_id, :customer_details, :customer_name, :customer_phone, :customer_email, :job_no, :paper_type_id, :card_type_id, :created_at, :updated_at
+json.url casino_card_art_request_url(casino_card_art_request, format: :json)

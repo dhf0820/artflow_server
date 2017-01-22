@@ -1,0 +1,18 @@
+= simple_form_for(@customer) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :name
+        = f.input :address1
+        = f.input :address2
+        = f.input :address3
+      .col-md-6
+        = f.input :sage_id
+        = f.input :contact_name
+        = f.input :contact_email
+        = f.input :contact_phone
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,2 @@
+class JokerPolicy < ApplicationPolicy
+end

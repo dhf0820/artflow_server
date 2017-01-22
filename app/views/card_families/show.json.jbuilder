@@ -1,0 +1,1 @@
+json.partial! "card_families/card_family", card_family: @card_family

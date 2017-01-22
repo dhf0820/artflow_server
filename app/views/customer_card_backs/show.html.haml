@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Family:
+  = @customer_card_back.family_id
+%p
+  %b Back:
+  = @customer_card_back.back_id
+%p
+  %b Print seq:
+  = @customer_card_back.print_seq_id
+%p
+  %b Customer number:
+  = @customer_card_back.customer_number
+%p
+  %b Card size:
+  = @customer_card_back.card_size_id
+%p
+  %b Plate:
+  = @customer_card_back.plate_id
+%p
+  %b Job:
+  = @customer_card_back.job_id
+%p
+  %b Art:
+  = @customer_card_back.art_id
+%p
+  %b Approved date:
+  = @customer_card_back.approved_date
+%p
+  %b Customer approved by:
+  = @customer_card_back.customer_approved_by
+%p
+  %b Approval entered by:
+  = @customer_card_back.approval_entered_by
+%p
+  %b Comments:
+  = @customer_card_back.comments
+
+= link_to 'Edit', edit_customer_card_back_path(@customer_card_back)
+\|
+= link_to 'Back', customer_card_backs_path

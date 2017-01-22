@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  desc: MyString
+  itsmshnam: MyString
+  product_id: 1
+  dsp_order: 1
+  pkg_count: 1
+
+two:
+  name: MyString
+  desc: MyString
+  itsmshnam: MyString
+  product_id: 1
+  dsp_order: 1
+  pkg_count: 1

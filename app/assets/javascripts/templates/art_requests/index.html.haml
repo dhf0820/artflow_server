@@ -1,0 +1,44 @@
+.row{"ng-init" => "init()","ng-show" => "index"}
+  .col.s12
+    %form.form-horizontal{:role => "form"}
+      .col.s2
+        %select{"material-select" => "", "ng-model" => "select.value"}
+          %option{"ng-repeat" => "value in select.choices"}
+      .col.s2
+        %input{"ng-model" => "dummyInputs.inputFieldInput", :type => "text"}
+      .col.s1{:style => "padding-top: 28px"}
+        %button.btn{"ng-click" => "backtoIndex()"} GO
+    .col.s2{:style => "padding-top: 28px"}
+      View: My Requests
+    .col.s2{:style => "padding-top: 28px"}
+      Order by: Job Id
+    .col.s2{:style => "padding-top: 28px"}
+      %a.right{:href => "#", "ng-click" => "customerSearchForm()"} New Art request
+%ul{"data-collapsible" => "expandable","ng-show" => "index"} 
+  %li{"ng-repeat" => "art_request in art_requests","disable_expand" => "", "disable" => "true"}
+    .collapsible-header.jheader
+      %span.jtext.jcustom-space
+        Job Id:
+        {{ art_request.id }}
+      %span.jtext.jcustom-space {{ art_request.name }}
+      %span.jtext.jcustom-space
+        Status: Submitted
+      %span.jtext.jcustom-space
+        Artist:
+        {{ art_request.sales_rep.name }}
+      %span.jtext
+        Ship Date:
+        {{ art_request.art_requested_date | date:'MM/dd/yyyy'}}
+      %span.edits.right{}
+        %i.material-icons{"dishboard_collapse" => ""} visibility
+      %span.edits.right
+        %a{:href => "#", "ng-click" => "editArtRequest(art_request)"}
+          %i.material-icons mode_edit 
+    .collapsible-body
+      %p{"ng-include" => "\"art_requests/status.html\"", :style => "padding: 0px"}
+      %p{"ng-include" => "\"art_requests/specs.html\"", :style => "padding: 0px"}
+
+%div{"ng-if" => "cust_search", "ng-include" => "\"customers/search_form.html\""}
+%div{"ng-if" => "new", "ng-include" => "\"art_requests/new.html\""}
+%div{"ng-if" => "edit", "ng-include" => "\"art_requests/edit.html\""}
+

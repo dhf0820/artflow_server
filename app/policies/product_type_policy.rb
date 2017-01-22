@@ -1,0 +1,2 @@
+class ProductTypePolicy < ApplicationPolicy
+end

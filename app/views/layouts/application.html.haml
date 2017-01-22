@@ -1,0 +1,42 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Artwork
+    = stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/default/style", "web-app-theme/override", :cache => true
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    %link{:href => "http://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
+    %link{:href => "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
+    %link{:href => "assets/stylesheet/style.css", :rel => "stylesheet"}/
+    %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
+    = csrf_meta_tag
+  %body{"ng-app" => "artApp"}
+    = render 'layouts/navigation'                
+    .container
+      #wrapper.wat-cf
+        .flash
+          - flash.each do |type, message|
+            %div{:class => "message #{type}"}
+              %p= message
+      #main
+        = yield
+        #footer
+          .block
+            %p
+              Copyright © #{Time.now.year} Artflow
+      #sidebar
+        = yield :sidebar
+/ #myModal.modal.fade{role: "dialog"}
+/   .modal-dialog
+/     .modal-content
+/       =# simple_form_for(:user, :url => user_session_path) do |f|
+/         .modal-header
+/           %button{type: "button", class: "close", "data-dismiss" => "modal"} &times;
+/           %h3 Login
+/         .modal-body
+/           =# f.input :email
+/           =# f.input :password
+/         .modal-footer
+/           %button{type: "button", class: "btn btn-default", "data-dismiss" => "modal"} Close
+/           =# f.button :submit, "Login", class: 'btn btn-default'

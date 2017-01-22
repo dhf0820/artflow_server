@@ -1,0 +1,1 @@
+json.array! @card_edges, partial: 'card_edges/card_edge', as: :card_edge

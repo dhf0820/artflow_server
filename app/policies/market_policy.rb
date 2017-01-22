@@ -1,0 +1,2 @@
+class MarketPolicy < ApplicationPolicy
+end

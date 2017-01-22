@@ -1,0 +1,2 @@
+class CardFamilyPolicy < ApplicationPolicy
+end
