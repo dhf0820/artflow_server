@@ -67,18 +67,39 @@ class ArtRequest < ApplicationRecord
   def ArtRequest.for_customer(id)
     request = ArtRequest.where(:customer_id => id)
     #request = ArtRequest.find(:all, :conditions => {customer_id => id})
-
     raise CustomerNotFoundError.new('Customer did not request ay art') if request.count == 0
-    return request
+    request
   end
 
 
-  def ArtRequest.fifo
-
+  def ArtRequest.next(artist)
+    # get return the active one if tehe is one
+    next_request = ArtRequest.where(['artist_id = :artist_id and status = :status', {artist_id: artist.id, status: 'ACTIVE'}])
+    return next_request[0] if next_request.count > 0
+    #next_request = ArtRequest.where("status = 'PENDING'").order(created_at: :asc)
+    next_request = ArtRequest.where(status: 'PENDING').order('created_at ASC')
+    next_request[0]
   end
 
 
+  def ArtRequest.held_requests(artist)
+    # get return the active one if tehe is one
+    held_list = ArtRequest.where(['artist_id = :artist_id and status = :status', {artist_id: artist.id, status: 'HOLD'}])
+    return held_list
+  end
 
+  def ArtRequest.held_request!(artist, job_id)
+    held_job = ArtRequest.where(['artist_id = :artist_id and id = :id', {artist_id: artist.id, id: job_id}])
+    raise ActiveRecord::RecordNotFound if held_job.count == 0
+    current_job = artist.current_job
+    unless current_job.nil?
+      current_job.status = 'HOLD'
+      current_job.save
+    end
+    held_job[0].status = 'ACTIVE'
+    held_job[0].save
+    return held_job[0]
+  end
 
   private
 

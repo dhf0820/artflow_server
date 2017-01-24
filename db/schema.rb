@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170121073052) do
+ActiveRecord::Schema.define(version: 20170124062017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20170121073052) do
     t.string   "product_request_class"
     t.integer  "artist_id"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["artist_id", "status"], name: "index_art_requests_on_artist_id_and_status", using: :btree
     t.index ["customer_id"], name: "index_art_requests_on_customer_id", using: :btree
     t.index ["deleted_at"], name: "index_art_requests_on_deleted_at", using: :btree
