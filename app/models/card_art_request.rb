@@ -19,6 +19,14 @@ class CardArtRequest < ApplicationRecord
     request[0]
   end
 
+  def CardArtRequest.where_with_details(where)
+
+    request = CardArtRequest.where(where)
+    puts "Getting all the specs"
+    request.all_specs
+    request
+  end
+
   def CardArtRequest.details()
     items = []
     designs = CardDesignType.details
@@ -39,6 +47,13 @@ class CardArtRequest < ApplicationRecord
     #
     # detail
 
+  end
+
+  def all_specs
+    self.card_face_specs = self.face_specs
+    self.card_back_specs = self.back_specs
+    puts self.card_back_specs
+    puts self.card_face_specs
   end
 
   def add_face_spec(spec)

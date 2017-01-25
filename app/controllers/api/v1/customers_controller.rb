@@ -25,7 +25,7 @@ class Api::V1::CustomersController < Api::V1::ApiController
     if @customer
       render '/api/v1/customers/show', status: 200
     else
-      render json: {:error => "No customer found"}, status: 200
+      render json: {:error => 'No customer found'}, status: 200
     end
   end
 
@@ -33,8 +33,8 @@ class Api::V1::CustomersController < Api::V1::ApiController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_product
-    @product = Product.find(params[:id])
+  def set_customer
+    @product =Customer.find(params[:id])
   end
 
   def customer_params

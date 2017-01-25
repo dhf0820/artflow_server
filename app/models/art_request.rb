@@ -72,33 +72,21 @@ class ArtRequest < ApplicationRecord
   end
 
 
-  def ArtRequest.next(artist)
-    # get return the active one if tehe is one
-    next_request = ArtRequest.where(['artist_id = :artist_id and status = :status', {artist_id: artist.id, status: 'ACTIVE'}])
-    return next_request[0] if next_request.count > 0
-    #next_request = ArtRequest.where("status = 'PENDING'").order(created_at: :asc)
-    next_request = ArtRequest.where(status: 'PENDING').order('created_at ASC')
-    next_request[0]
+  def ArtRequest.next(artist_id)
+    artist = Artist.find(artist_id)
+    artist.next_job
   end
 
 
-  def ArtRequest.held_requests(artist)
-    # get return the active one if tehe is one
-    held_list = ArtRequest.where(['artist_id = :artist_id and status = :status', {artist_id: artist.id, status: 'HOLD'}])
-    return held_list
+  def ArtRequest.held_requests(artist_id)
+    artist = Artist.find(artist_id)
+    artist.on_holds
   end
 
-  def ArtRequest.held_request!(artist, job_id)
-    held_job = ArtRequest.where(['artist_id = :artist_id and id = :id', {artist_id: artist.id, id: job_id}])
-    raise ActiveRecord::RecordNotFound if held_job.count == 0
-    current_job = artist.current_job
-    unless current_job.nil?
-      current_job.status = 'HOLD'
-      current_job.save
-    end
-    held_job[0].status = 'ACTIVE'
-    held_job[0].save
-    return held_job[0]
+  def ArtRequest.held_request(artist_id, job_id)
+    artist = Artist.find(artist_id)
+    artist.on_hold(job_id)
+
   end
 
   private
@@ -112,6 +100,11 @@ class ArtRequest < ApplicationRecord
     request.save!
   end
 
+  def product_request
+    request_class = product.product_request_class.constantize
+    request = request_class.where(["art_set_id = :art_request_id", {art_request_id: self.id}])
+
+  end
   # do not allow the distruction of an art request that still
   def before_destroy
 

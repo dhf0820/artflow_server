@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   get 'new_specification' => 'art_requests#new_specification'
   resources :users, only: [:create] 
   devise_for :users
@@ -73,6 +74,12 @@ Rails.application.routes.draw do
           get :details
         end
       end
+      resources :artists do
+        get '/:id/next_job' => 'artists#next_job'
+        get '/:id/on_holds' => 'artist#on_holds'
+      end
+      get '/artist/:id/nextjob' => 'artists#next_job'
+      get '/artist/:id/on_holds' => 'artist2#on_holds'
     end
   end
 end

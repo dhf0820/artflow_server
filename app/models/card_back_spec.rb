@@ -1,5 +1,6 @@
 class CardBackSpec < ApplicationRecord
   belongs_to :card_art_request
+  has_one :card_color
   enum status: [:preparing,
                 :submitted,
                 :started,

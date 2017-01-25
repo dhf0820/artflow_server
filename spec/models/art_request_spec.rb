@@ -152,7 +152,7 @@ describe 'ArtRequest for Customer' do
           art_request.status = 'ACTIVE'
           art_request.artist = artist
           art_request.save
-          expect(ArtRequest.next(artist).id).to eql(art_request.id)
+          expect(ArtRequest.next(artist.id).id).to eql(art_request.id)
         end
       end
       context 'Artist has only HOLD jobs' do
@@ -174,7 +174,7 @@ describe 'ArtRequest for Customer' do
           req.customer_id = wynn.id
           req.status = 'PENDING'
           req.save!
-          expect(ArtRequest.next(artist).id).to eql(request.id)
+          expect(ArtRequest.next(artist.id).id).to eql(request.id)
         end
       end
     end
@@ -192,7 +192,7 @@ describe 'ArtRequest for Customer' do
           art_request.customer_id = wynn.id
           art_request.status = 'PENDING'
           art_request.save
-          expect(ArtRequest.held_requests(artist).count).to eql 0
+          expect(ArtRequest.held_requests(artist.id)).to be_nil
         end
       end
       context 'Artist has multiple HOLD jobs' do
@@ -215,7 +215,7 @@ describe 'ArtRequest for Customer' do
           req.status = 'ACTIVE'
           req.artist = artist
           req.save!
-          expect(ArtRequest.held_requests(artist).count).to eql 2
+          expect(ArtRequest.held_requests(artist.id).count).to eql 2
         end
       end
     end
@@ -223,7 +223,7 @@ describe 'ArtRequest for Customer' do
 
   describe 'Return a Held job for artist' do
     context 'Job is not held by artist' do
-      it 'Raises not found error' do
+      it 'returns ni' do
         artist = Artist.new(:name => 'Joe Artist')
         artist.save
         request.product_id = casino_card.id
@@ -235,7 +235,8 @@ describe 'ArtRequest for Customer' do
         art_request.customer_id = wynn.id
         art_request.status = 'PENDING'
         art_request.save
-        expect{ArtRequest.held_request!(artist, request.id)}.to raise_error(ActiveRecord::RecordNotFound)
+        expect(ArtRequest.held_request(artist.id, request.id)).to be_nil
+        #expect{ArtRequest.held_request!(artist, request.id)}.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
     context 'Artist has a held job' do
@@ -258,7 +259,7 @@ describe 'ArtRequest for Customer' do
         req.status = 'ACTIVE'
         req.artist = artist
         req.save!
-        held = ArtRequest.held_request!(artist, request.id)
+        held = ArtRequest.held_request(artist.id, request.id)
         expect(held.id).to eql request.id
         expect(held.status).to eql 'ACTIVE'
         req = ArtRequest.find(req.id)
